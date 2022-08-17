@@ -1,5 +1,6 @@
 from turtle import Turtle
 from random import randint
+from playsound import playsound
 
 # TODO I think i can optimize this with another function to nest in the paddle hit
 
@@ -22,6 +23,7 @@ class Ball(Turtle):
         else:
             self.x_move *= -1
             self.y_move *= -1
+        playsound('Sound 9.wav', False)
         self.spin_regulation()
 
     # bouncing off the top
@@ -30,6 +32,7 @@ class Ball(Turtle):
         self.y_move *= -1
         if self.x_move == 0:
             self.x_move -= 1
+        playsound('Sound 38.wav', False)
 
     def move(self):
         # print(self.x_move, self.y_move)
@@ -48,6 +51,7 @@ class Ball(Turtle):
             self.x_direction = 'left'
 
         # Y always changes direction on a paddle bounce
+        playsound('Sound 39.wav', False)
         self.y_move *= -1
 
         # X changes direction depending on different things
@@ -151,6 +155,7 @@ class Ball(Turtle):
             self.y_move -= 1
         else:
             self.y_move += 1
+        playsound('Sound 38.wav', False)
 
 
 

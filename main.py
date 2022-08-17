@@ -1,10 +1,12 @@
 from time import sleep
 from turtle import Screen
 import tkinter as tk
+from playsound import playsound
+import simpleaudio as sa
+
 import paddle
 from writing import Message
 from ball import Ball
-
 from blocks import BlocksAndBoards
 
 LIVES_STARTING = 3
@@ -62,6 +64,10 @@ bnb = BlocksAndBoards(bhf=BLOCK_HEIGHT_FACTOR,
                       rh=ROW_HEIGHT,
                       topy=TOP_Y)
 
+wave_object = sa.WaveObject.from_wave_file("04-Book of Marseille.wav")
+# try to start thread to wait done while playing game. This is to know how/when to loop audio.
+wo = wave_object.play()
+# wo.wait_done()
 
 def launch_ball():
     """ Hitting the space bar between turns re-starts the game."""
@@ -96,6 +102,7 @@ def game_over():
     ball.hideturtle()
     paddle.hideturtle()
     screen.update()
+    playsound("Future Samples_Anime Vocals_Laugh 04.wav", False)
     writing.game_over(h=screen_height, w=screen_width, score=score)
 
 
